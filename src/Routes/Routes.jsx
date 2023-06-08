@@ -8,9 +8,6 @@ import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/404/ErrorPage";
 
 
-
-
-
 const router = createBrowserRouter([
     {
         path: '/',
@@ -23,10 +20,6 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
-            },
-            {
-                path: '/register',
-                element: <Register></Register>
             },
             {
                 path: '/register',
