@@ -17,8 +17,6 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const handleLogin = data => {
-        console.log(data)
-
         signIn(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
