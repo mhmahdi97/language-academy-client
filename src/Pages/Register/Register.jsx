@@ -24,7 +24,7 @@ const Register = () => {
                     <h2 className="text-gray-900 text-3xl font-medium title-font mb-5">Register to an Account</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="relative mb-4">
-                            <label className="leading-7 text-sm text-gray-600">Name</label>
+                            <label className="leading-7 text-sm text-gray-600">Name*</label>
                             <input type="text" {...register("name", { required: true })} name="name" placeholder="Enter Your Name" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             {errors.name && <span className="text-red-600">Name is required</span>}
                         </div>
@@ -33,12 +33,12 @@ const Register = () => {
                             <input type="text" {...register("photoURL")} name="photo" placeholder="Enter Your Photo URL" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <div className="relative mb-4">
-                            <label className="leading-7 text-sm text-gray-600">Email</label>
+                            <label className="leading-7 text-sm text-gray-600">Email*</label>
                             <input type="email" {...register("email", { required: true })} name="email" placeholder="Enter Your Email" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             {errors.email && <span className="text-red-600">Email is required</span>}
                         </div>
                         <div className="relative mb-4">
-                            <label className="leading-7 text-sm text-gray-600">Password</label>
+                            <label className="leading-7 text-sm text-gray-600">Password*</label>
                             <input type="password"
                             {...register("password", {
                                     required: true,
@@ -55,7 +55,7 @@ const Register = () => {
                         
                         
                         <div className="relative mb-4">
-                            <label className="leading-7 text-sm text-gray-600">Confirm Password</label>
+                            <label className="leading-7 text-sm text-gray-600">Confirm Password*</label>
                             <input type="password"
                             {...register("passwordConfirmation", {
                                     required: "Please confirm password!",

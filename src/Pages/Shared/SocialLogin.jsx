@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
@@ -15,18 +16,25 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                // const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-                // fetch('https://bistro-boss-server-fawn.vercel.app/users', {
-                //     method: 'POST',
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(saveUser)
-                // })
-                //     .then(res => res.json())
-                //     .then(() => {
-                //         navigate(from, { replace: true });
-                //     })
+                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, role: "user" }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        Swal.fire({
+                            position: 'top',
+                            icon: 'success',
+                            title: 'User Login Successfull!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate(from, { replace: true });
+                    })
             })
     }
 
