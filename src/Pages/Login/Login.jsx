@@ -4,10 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import SocialLogin from '../Shared/SocialLogin';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 const Login = () => {
 
     const [error, setError] = useState('');
+    const [togglePassword, setTogglePassword] = useState(false);
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { signIn } = useContext(AuthContext);
@@ -15,6 +17,10 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
+
+    const handleTogglePassword = () => {
+        setTogglePassword(!togglePassword);
+    }
 
     const handleLogin = data => {
         signIn(data.email, data.password)
@@ -40,12 +46,7 @@ const Login = () => {
                     setError('Account Not Found!!!')
                 }
             })
-
-
-
-
     }
-
 
     return (
         <div className="text-gray-600 body-font">
@@ -59,7 +60,7 @@ const Login = () => {
                     </div>
                     <div className="relative mb-4">
                         <label className="leading-7 text-sm text-gray-600">Password</label>
-                        <input type="password" {...register("password", { required: true })} placeholder="Enter Your Password" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                        <input type={!togglePassword ? "password" : "text"} {...register("password", { required: true })} placeholder="Enter Your Password" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" /> <span onClick={handleTogglePassword} className='cursor-pointer'> {!togglePassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>} </span>
                         <p className='text-red-600 text-lg mt-2'>{error}</p> 
                     </div>
                     <button className="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Login</button>
