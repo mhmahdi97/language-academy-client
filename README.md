@@ -3,7 +3,7 @@
 The best foreign languge learning insttitute in the town!
 In our  website, you can do:
  - find best language courses according to your need
- - find our best instructors growing your fluecny
+ - find our best instructors for growing your fluecny
  - you can join and create account in our website
  - purchase courses and pay globally throw strip
  - you can join also as an instructor in our website
