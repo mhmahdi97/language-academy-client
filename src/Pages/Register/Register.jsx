@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from '../Shared/SocialLogin';
 
 const Register = () => {
 
@@ -81,6 +82,7 @@ const Register = () => {
                     <p className="text-xs text-gray-500 mt-3">
                         Already Have an Account? Login <Link to="/login" className="text-blue-600">Here</Link>
                     </p>
+                    <SocialLogin></SocialLogin>
 
                     
                 
