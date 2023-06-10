@@ -29,7 +29,7 @@ const PopularCourses = () => {
                     </div>
                     <p className="lg:w-1/2 w-full mx-auto leading-relaxed text-gray-500 text-center">Explore our diverse range of popular language courses. From English to Spanish, Arabic to Chinese, our expert instructors will guide you on your language learning journey. Unlock new cultures and opportunities with our engaging courses.</p>
                 </div>
-                <div className="flex flex-wrap -m-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {
                         sortedCourses.slice(0, 6).map(course => <PopularCoursesCard
                             key={course._id}
@@ -37,6 +37,8 @@ const PopularCourses = () => {
                         ></PopularCoursesCard>)
                     }
                 </div>
+
+                {/* flex flex-wrap -m-4 */}
 
             </div>
         </section>
