@@ -12,6 +12,12 @@ const PopularCourses = () => {
         .then(data => setCourses(data))
     },  [])
 
+    const sortedCourses = courses.sort((c1, c2) => {
+        return c2.enrolled - c1.enrolled 
+    } );
+
+    console.log(sortedCourses)
+
     return (
         <section className="text-gray-600 body-font mt-12">
             <div className="container px-5 py-24 mx-auto">
@@ -25,7 +31,7 @@ const PopularCourses = () => {
                 </div>
                 <div className="flex flex-wrap -m-4">
                     {
-                        courses.map(course => <PopularCoursesCard
+                        sortedCourses.slice(0, 6).map(course => <PopularCoursesCard
                             key={course._id}
                             course={course}
                         ></PopularCoursesCard>)
