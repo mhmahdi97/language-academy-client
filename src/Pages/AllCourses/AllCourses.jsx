@@ -3,12 +3,17 @@ import AllCoursesCard from './AllCoursesCard';
 
 const AllCourses = () => {
     const [Allcourses, setCourses] = useState([]);
-    const url = 'http://localhost:5000/courses'
+    const [loading, setLoading] = useState(true);
+    
+    const url = 'http://localhost:5000/courses?status=approved'
 
     useEffect(()=>{
         fetch(url)
         .then(res => res.json())
-        .then(data => setCourses(data))
+        .then(data => {
+            setCourses(data)
+            setLoading(false)
+        })
     },  [])
 
     return (
@@ -21,8 +26,9 @@ const AllCourses = () => {
                         
                     </div>
                 </div>
-                <div className="flex flex-wrap -m-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     {
+                        loading ? <span className="loading loading-bars loading-lg mx-auto"></span> :
                         Allcourses.map(course => <AllCoursesCard
                             key={course._id}
                             course={course}
