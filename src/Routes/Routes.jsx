@@ -4,8 +4,8 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Instructors from "../Pages/Instructors/Instructors";
-import Courses from "../Pages/Courses/Courses";
 import ErrorPage from "../Pages/404/ErrorPage";
+import AllCourses from "../Pages/AllCourses/AllCourses";
 
 
 const router = createBrowserRouter([
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <AllCourses></AllCourses>
             }
         ]
     },
