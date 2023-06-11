@@ -6,7 +6,7 @@ const PopularCourses = () => {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const url = 'http://localhost:5000/courses'
+    const url = 'http://localhost:5000/courses?status=approved'
 
     useEffect(()=>{
         fetch(url)
@@ -24,7 +24,7 @@ const PopularCourses = () => {
     console.log(sortedCourses)
 
     return (
-        <section className="text-gray-600 body-font mt-12">
+        <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
                
                 <div className="w-full mb-12">

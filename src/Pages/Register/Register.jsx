@@ -12,6 +12,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     const onSubmit = data =>{
+        console.log(data)
 
         createUser(data.email, data.password)
             .then(result => {
@@ -21,7 +22,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email, role: 'user' }
+                        const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'user' }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -66,7 +67,7 @@ const Register = () => {
                         </div>
                         <div className="relative mb-4">
                             <label className="leading-7 text-sm text-gray-600">Photo URL</label>
-                            <input type="text" {...register("photoURL")} name="photo" placeholder="Enter Your Photo URL" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="text" {...register("photoURL")} placeholder="Enter Your Photo URL" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <div className="relative mb-4">
                             <label className="leading-7 text-sm text-gray-600">Email*</label>

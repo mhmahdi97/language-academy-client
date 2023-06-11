@@ -7,7 +7,7 @@ import img3 from '../../assets/slider-image/3.png';
 
 const TopSlider = () => {
     return (
-        <div className="carousel w-full h-[75vh] mt-24 md:mt-16">
+        <div className="carousel w-full h-[75vh] mt-28 md:mt-16">
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={img1} className="w-full rounded-xl" />
                 <div className="absolute rounded-xl flex items-center h-full bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
