@@ -3,9 +3,9 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import Instructors from "../Pages/Instructors/Instructors";
 import ErrorPage from "../Pages/404/ErrorPage";
 import AllCourses from "../Pages/AllCourses/AllCourses";
+import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 
 
 const router = createBrowserRouter([
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             }, 
             {
                 path: '/instructors',
-                element: <Instructors></Instructors>
+                element: <AllInstructors></AllInstructors>
             },
             {
                 path: '/courses',

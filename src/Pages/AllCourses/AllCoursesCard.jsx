@@ -16,7 +16,7 @@ const AllCoursesCard = ({course}) => {
 
     return (
         <div className=" p-4">
-            <div className={`${availableSeats === 0 ? 'bg-red-200' : 'bg-gray-100'} p-6 h-[480px] rounded-lg`}>
+            <div className={`${availableSeats === 0 ? 'bg-red-200' : 'bg-gray-100'} p-6 rounded-lg`}>
             <img className="h-40 rounded w-full object-cover object-center mb-6" src={image} alt="courses" />
             <h3 className="tracking-widest text-red-500 text-xs font-medium title-font">{name}</h3>
             <h2 className="text-lg text-gray-900 font-bold title-font mb-4">{slogan}</h2>
