@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 
 const useSelectedCourses = () => {
-    const { user, loading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const { refetch, data: selectedCourses = [] } = useQuery({
         queryKey: ['selected-courses', user?.email],
         // enabled: !loading,

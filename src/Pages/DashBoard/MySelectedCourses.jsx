@@ -56,7 +56,7 @@ const MySelectedCourses = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full mt-12">
             <div className="font-semibold h-[60px] flex justify-evenly items-center">
                 <h3 className="text-3xl">Total Courses: {selectedCourses.length}</h3>
                 <h3 className="text-3xl">Total Price: ${total}</h3>
