@@ -1,23 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FaTrashAlt } from "react-icons/fa";
-// import useAuth from '../../hooks/useAuth';
+import useSelectedCourses from '../../hooks/useSelectedCourses';
 
 const MySelectedCourses = () => {
-    const { user } = useContext(AuthContext);
-    // const {user} = useAuth;
-    const email = user?.email;
-
-    const [selectedCourses, setSelectedCourses] = useState([]);
-    const url = `http://localhost:5000/selected-courses?email=${email}`
-
-    useEffect(()=>{
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setSelectedCourses(data))
-    }, [user])
+    const [selectedCourses, refetch] = useSelectedCourses();
 
     console.log(selectedCourses)
 
@@ -43,7 +31,7 @@ const MySelectedCourses = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
-                            // refetch();
+                            refetch();
                             Swal.fire(
                                 'Deleted!',
                                 'The Course Has Been Removed.',
