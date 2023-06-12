@@ -21,7 +21,6 @@ const PopularCourses = () => {
         return c2.enrolled - c1.enrolled 
     } );
 
-    console.log(sortedCourses)
 
     return (
         <section className="text-gray-600 body-font">

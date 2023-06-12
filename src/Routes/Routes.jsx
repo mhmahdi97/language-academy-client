@@ -6,6 +6,8 @@ import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/404/ErrorPage";
 import AllCourses from "../Pages/AllCourses/AllCourses";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
+import DashBoard from "../Layout/DashBoard";
+import MySelectedCourses from "../Pages/DashBoard/MySelectedCourses";
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,36 @@ const router = createBrowserRouter([
                 element: <AllCourses></AllCourses>
             }
         ]
+    },
+
+    {
+      path: 'dashboard',
+      element: <DashBoard></DashBoard>, 
+      children: [
+        // student dashboard
+        {
+          path: 'my-selected-courses',
+          element: <MySelectedCourses></MySelectedCourses>
+        },
+      
+        // // admin routes
+        // {
+        //   path: 'adminhome',
+        //   element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        // },
+        // {
+        //   path: 'allusers', 
+        //   element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        // },
+        // {
+        //   path: 'addItem',
+        //   element: <AdminRoute><AddItem></AddItem></AdminRoute>
+        // },
+        // {
+        //   path: 'manageitems',
+        //   element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+        // }
+      ]
     },
     
     

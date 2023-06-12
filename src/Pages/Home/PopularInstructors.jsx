@@ -19,7 +19,6 @@ const PopularInstructors = () => {
     const sortedInstructors = instructors.sort((i1, i2) => {
         return i2.enrolled - i1.enrolled 
     } );
-    console.log(sortedInstructors);
 
     return (
         <section className="text-gray-600 body-font">
