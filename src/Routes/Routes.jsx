@@ -8,6 +8,7 @@ import AllCourses from "../Pages/AllCourses/AllCourses";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import DashBoard from "../Layout/DashBoard";
 import MySelectedCourses from "../Pages/DashBoard/MySelectedCourses";
+import AddCourse from "../Pages/DashBoard/AddCourse";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
         {
           path: 'my-selected-courses',
           element: <MySelectedCourses></MySelectedCourses>
+        },
+
+        // instructor dashboard
+        {
+          path: 'add-course',
+          element: <AddCourse></AddCourse>
         },
       
         // // admin routes
