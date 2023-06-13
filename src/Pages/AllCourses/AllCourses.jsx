@@ -22,7 +22,7 @@ const AllCourses = () => {
                
                 <div className="w-full mb-12">
                     <div className="lg:w-1/2 w-full mb-6 mx-auto lg:mb-0">
-                        <h1 className="sm:text-4xl text-2xl text-center font-bold title-font mb-4 text-gray-900"> Finde Our All <span className='text-red-500'>Language</span> Courses</h1>
+                        <h1 className="sm:text-4xl text-2xl text-center font-bold title-font mb-4 text-gray-900"> Find Our All <span className='text-red-500'>Language</span> Courses</h1>
                         
                     </div>
                     <p className="lg:w-1/2 w-full mx-auto leading-relaxed text-gray-500 text-center">Experience our renowned language courses with top-notch instructors. Delve into a world of languages, from English to Spanish, Arabic to Chinese, and embark on a transformative journey of cultural exploration and linguistic mastery.</p>

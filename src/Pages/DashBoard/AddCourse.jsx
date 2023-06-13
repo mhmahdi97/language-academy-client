@@ -33,11 +33,11 @@ const AddCourse = () => {
             if(imgResponse.success){
                 const imgURL = imgResponse.data.display_url;
                 const {name, price, slogan, instructorEmail, instructorName, availableSeats, description} = data;
-                const newCourse = {name,  instructorEmail, instructorName, image:imgURL, availableSeats: parseFloat(availableSeats), enrolled: 0, price: parseFloat(price), status: 'approved', slogan, description}
+                const newCourse = {name,  instructorEmail, instructorName, image:imgURL, availableSeats: parseFloat(availableSeats), enrolled: 0, price: parseFloat(price), status: 'pending', slogan, description, feedback: ''}
                 console.log(newCourse)
                 axiosSecure.post('/courses', newCourse)
                 .then(data => {
-                    console.log('after posting new menu item', data.data)
+                    console.log('after posting course', data.data)
                     if(data.data.insertedId){
                         reset();
                         Swal.fire({
