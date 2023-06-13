@@ -27,7 +27,6 @@ const AllCoursesCard = ({course}) => {
             .then(res => res.json())
             .then(data => {
                 if(data.insertedId){
-                    // refetch(); // refetch cart to update the number of items in the cart
                     Swal.fire({
                         position: 'top',
                         icon: 'success',

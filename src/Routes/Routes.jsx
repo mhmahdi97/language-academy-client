@@ -10,6 +10,7 @@ import DashBoard from "../Layout/DashBoard";
 import MySelectedCourses from "../Pages/DashBoard/MySelectedCourses";
 import AddCourse from "../Pages/DashBoard/AddCourse";
 import MyCourses from "../Pages/DashBoard/MyCourses";
+import ManageCourses from "../Pages/DashBoard/ManageCourses";
 
 
 const router = createBrowserRouter([
@@ -61,8 +62,16 @@ const router = createBrowserRouter([
           path: 'my-courses',
           element: <MyCourses></MyCourses>
         },
+        
+        // admin routes
+        {
+          path: 'manage-courses',
+          element: <ManageCourses></ManageCourses>
+        },
 
-        // // admin routes
+
+
+
         // {
         //   path: 'adminhome',
         //   element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
