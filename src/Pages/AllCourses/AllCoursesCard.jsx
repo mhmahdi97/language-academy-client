@@ -16,7 +16,7 @@ const AllCoursesCard = ({course}) => {
 
      const handleSelect = (course)=> {
         if(user && user.email){
-            const selectedCourse = {selectedCourseId: _id, name, slogan, image, price, email: user.email}
+            const selectedCourse = {selectedCourseId: _id, name, slogan, instructorName, image, price, email: user.email}
             fetch('http://localhost:5000/selected-courses', {
                 method: 'POST',
                 headers: {

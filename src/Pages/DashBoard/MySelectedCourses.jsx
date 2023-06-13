@@ -11,7 +11,7 @@ const MySelectedCourses = () => {
 
 
     
-    const total = selectedCourses.reduce((sum, course) => course.price + sum, 0);
+    const total = selectedCourses.reduce((sum, course) => course.price + sum, 0).toFixed(2);
 
     const handleDelete = course => {
         console.log(course)
@@ -60,6 +60,7 @@ const MySelectedCourses = () => {
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
+                            <th>Instructor</th>
                             <th>Price</th>
                             <th>Action</th>
                         </tr>
@@ -73,14 +74,17 @@ const MySelectedCourses = () => {
                                     {index + 1}
                                 </td>
                                 <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
+                                    <div>
+                                        <div className="w-56">
                                             <img src={course.image} alt="course image" />
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     {course.slogan}
+                                </td>
+                                <td>
+                                    {course.instructorName}
                                 </td>
                                 <td >${course.price}</td>
                                 <td>
