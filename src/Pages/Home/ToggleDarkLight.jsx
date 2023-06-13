@@ -21,7 +21,7 @@ const ToggleDarkLight = () => {
 
 
     return (
-        <div>
+        <div className='md:mt-16'>
             <label className="swap swap-rotate">
   
                 {/* this hidden checkbox controls the state */}

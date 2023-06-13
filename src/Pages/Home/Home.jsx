@@ -9,8 +9,8 @@ import { Slide } from "react-awesome-reveal";
 const Home = () => {
     return (
         <div>
+            <ToggleDarkLight></ToggleDarkLight>
             <Slide>
-                <ToggleDarkLight></ToggleDarkLight>
                 <TopSlider></TopSlider>
                 <PopularCourses></PopularCourses>
                 <PopularInstructors></PopularInstructors>
