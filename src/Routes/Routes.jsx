@@ -11,6 +11,7 @@ import MySelectedCourses from "../Pages/DashBoard/MySelectedCourses";
 import AddCourse from "../Pages/DashBoard/AddCourse";
 import MyCourses from "../Pages/DashBoard/MyCourses";
 import ManageCourses from "../Pages/DashBoard/ManageCourses";
+import AdminFeedback from "../Pages/DashBoard/AdminFeedback";
 
 
 const router = createBrowserRouter([
@@ -67,6 +68,11 @@ const router = createBrowserRouter([
         {
           path: 'manage-courses',
           element: <ManageCourses></ManageCourses>
+        },
+        {
+          path: 'admin-feedback/:id',
+          element: <AdminFeedback></AdminFeedback>,
+          loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) 
         },
 
 

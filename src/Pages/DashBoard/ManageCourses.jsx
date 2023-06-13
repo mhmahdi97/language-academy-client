@@ -1,6 +1,7 @@
 import React from 'react';
 import useCourses from '../../hooks/useCourses';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ManageCourses = () => {
     const [courses, loading, refetch] = useCourses();
@@ -101,7 +102,9 @@ const ManageCourses = () => {
                                 <td>
                                     <button onClick={()=>handleApprove(course)} className="btn btn-sm bg-slate-200" disabled={course.status === 'approved' || course.status === 'denied' ? true : false} >Approve</button>
                                     <button onClick={()=>handleDeny(course)} className="btn btn-sm bg-slate-200" disabled={course.status === 'approved' || course.status === 'denied' ? true : false}>Deny</button>
-                                    <button className="btn btn-sm bg-slate-200">Send Feedback</button>
+                                    <Link to={`/dashboard/admin-feedback/${course._id}`}>
+                                        <button className="btn btn-sm bg-slate-200">Send Feedback</button>
+                                    </Link>
                                 </td>
                             </tr>)
                         }
