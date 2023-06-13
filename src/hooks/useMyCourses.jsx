@@ -10,7 +10,7 @@ const useMyCourses = () => {
         queryKey: ['instructor-courses', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure(`/instructor-courses?email=${user?.email}`)
+            const res = await axiosSecure(`/instructor-courses?instructorEmail=${user?.email}`)
             return res.data;
         },
     })
