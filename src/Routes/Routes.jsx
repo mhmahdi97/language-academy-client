@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoute"
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import MyEnrolledCourses from "../Pages/DashBoard/MyEnrolledCourses";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
         {
           path: 'my-enrolled-courses',
           element: <PrivateRoute> <MyEnrolledCourses></MyEnrolledCourses> </PrivateRoute>
+        },
+        {
+          path: 'payment/:id', 
+          element: <PrivateRoute> <Payment></Payment> </PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/selected-course/${params.id}`)
         },
 
         // instructor routes
