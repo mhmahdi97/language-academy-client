@@ -7,6 +7,7 @@ import { useLoaderData } from "react-router-dom";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
     const selectedCourse = useLoaderData();
+    console.log(selectedCourse)
     const {price} = selectedCourse;
     const fixedPrice = parseFloat(price.toFixed(2))
    
