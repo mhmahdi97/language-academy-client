@@ -8,7 +8,7 @@ import './CheckoutForm.css';
 
 
 const CheckoutForm = ({ selectedCourse, fixedPrice }) => {
-    const {_id, selectedCourseId, name, slogan, instructorName, image, price, email} = selectedCourse;
+    const {_id, selectedCourseId, name, slogan, instructorName, availableSeats, image, price, email} = selectedCourse;
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -80,16 +80,33 @@ const CheckoutForm = ({ selectedCourse, fixedPrice }) => {
             setTransactionId(paymentIntent.id);
             // save payment information to the server
             const payment = {
-                selectedCourseId, name, slogan, instructorName, image, price, email,
+                selectedCourseId, name, slogan, instructorName, image, price, email, transactionId: paymentIntent.id,
                 date: new Date()
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    // if (res.data.result.insertedId) {
-                    //     // display confirm
-                    // }
                 })
+            fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/selected-courses/${_id}`, {
+                    method: 'DELETE'
+                })
+            
+            
+
+
+            const updateSeats = {
+                newSeats: parseInt(availableSeats-1)
+            }
+
+            fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/feedback/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updateSeats)
+            } )
+        
+        
         }
 
 

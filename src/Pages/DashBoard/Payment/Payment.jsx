@@ -13,7 +13,7 @@ const Payment = () => {
    
     return (
         <div>
-            <h2 className="text-3xl"> Make a payment for the Course</h2>
+            <h2 className="text-3xl"> Make a payment for the <span className="text-red-500">{selectedCourse.slogan}</span> Course</h2>
             <Elements stripe={stripePromise}>
                 <CheckoutForm selectedCourse={selectedCourse} fixedPrice={fixedPrice}></CheckoutForm>
             </Elements>
