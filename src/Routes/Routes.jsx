@@ -47,19 +47,17 @@ const router = createBrowserRouter([
       path: 'dashboard',
       element: <DashBoard></DashBoard>, 
       children: [
-        // student dashboard
+        // student routes
         {
           path: 'my-selected-courses',
           element: <MySelectedCourses></MySelectedCourses>
         },
 
-        // instructor dashboard
+        // instructor routes
         {
           path: 'add-course',
           element: <AddCourse></AddCourse>
         },
-
-
         {
           path: 'my-courses',
           element: <MyCourses></MyCourses>
