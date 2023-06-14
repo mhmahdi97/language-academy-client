@@ -102,9 +102,16 @@ const ManageCourses = () => {
                                 <td>
                                     <button onClick={()=>handleApprove(course)} className="btn btn-sm bg-slate-200" disabled={course.status === 'approved' || course.status === 'denied' ? true : false} >Approve</button>
                                     <button onClick={()=>handleDeny(course)} className="btn btn-sm bg-slate-200" disabled={course.status === 'approved' || course.status === 'denied' ? true : false}>Deny</button>
-                                    <Link to={`/dashboard/admin-feedback/${course._id}`}>
+                                    {
+                                        course.status === 'denied' ? <Link to={`/dashboard/admin-feedback/${course._id}`}>
                                         <button className="btn btn-sm bg-slate-200">Send Feedback</button>
-                                    </Link>
+                                    </Link> : <></>
+                                    }
+
+                                    
+                                    
+
+
                                 </td>
                             </tr>)
                         }
