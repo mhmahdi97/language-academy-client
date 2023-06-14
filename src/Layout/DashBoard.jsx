@@ -35,6 +35,7 @@ const DashBoard = () => {
                             <li><NavLink to="/dashboard/my-courses"> My Courses</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/my-selected-courses">My Selected Courses</NavLink></li>
+                            <li><NavLink to="/dashboard/my-enrolled-courses">My Enrolled Courses</NavLink></li>
                         </>
                     }
                 </ul>
