@@ -9,7 +9,7 @@ const MyEnrolledCourses = () => {
 
     return (
         <div className="w-full mt-12">
-            <div className="font-semibold h-[60px]">
+            <div className="font-semibold ml-4 h-[60px]">
                 <h3 className="text-3xl">My Enrolled Courses:</h3>
         
             </div>

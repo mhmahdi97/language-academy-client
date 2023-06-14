@@ -9,8 +9,8 @@ const PaymentHistory = () => {
 
     return (
         <div className="w-full mt-12">
-            <div className="font-semibold h-[60px]">
-                <h3 className="text-3xl">Payment History</h3>
+            <div className="font-semibold ml-4 h-[60px]">
+                <h3 className="text-3x">Payment History</h3>
         
             </div>
             <div className="overflow-x-auto w-full">

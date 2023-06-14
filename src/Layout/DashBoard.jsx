@@ -37,7 +37,7 @@ const DashBoard = () => {
                         </> : <>
                             <li><NavLink to="/dashboard/my-selected-courses">My Selected Course <FaShoppingCart></FaShoppingCart> </NavLink></li>
                             <li><NavLink to="/dashboard/my-enrolled-courses">My Enrolled Courses <FaBook></FaBook> </NavLink></li>
-                            <li><NavLink to="/dashboard/payments-history">Payment History <FaBook></FaBook> </NavLink></li>
+                            <li><NavLink to="/dashboard/payments-history">Payment History </NavLink></li>
                         </>
                     }
                 </ul>
