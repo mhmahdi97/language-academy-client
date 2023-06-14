@@ -13,6 +13,9 @@ import MyCourses from "../Pages/DashBoard/MyCourses";
 import ManageCourses from "../Pages/DashBoard/ManageCourses";
 import AdminFeedback from "../Pages/DashBoard/AdminFeedback";
 import ManageUsers from "../Pages/DashBoard/ManageUsers";
+import PrivateRoute from "./PrivateRoute"
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 
 const router = createBrowserRouter([
@@ -45,77 +48,41 @@ const router = createBrowserRouter([
 
     {
       path: 'dashboard',
-      element: <DashBoard></DashBoard>, 
+      element: <PrivateRoute> <DashBoard></DashBoard> </PrivateRoute>, 
       children: [
         // student routes
         {
           path: 'my-selected-courses',
-          element: <MySelectedCourses></MySelectedCourses>
+          element: <PrivateRoute> <MySelectedCourses></MySelectedCourses> </PrivateRoute>
         },
 
         // instructor routes
         {
           path: 'add-course',
-          element: <AddCourse></AddCourse>
+          element: <InstructorRoute> <AddCourse></AddCourse> </InstructorRoute>
         },
         {
           path: 'my-courses',
-          element: <MyCourses></MyCourses>
+          element: <InstructorRoute><MyCourses></MyCourses></InstructorRoute>
         },
         
         // admin routes
         {
           path: 'manage-courses',
-          element: <ManageCourses></ManageCourses>
+          element: <AdminRoute><ManageCourses></ManageCourses></AdminRoute>
         },
         {
           path: 'manage-users',
-          element: <ManageUsers></ManageUsers>
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path: 'admin-feedback/:id',
-          element: <AdminFeedback></AdminFeedback>,
+          element: <AdminRoute><AdminFeedback></AdminFeedback></AdminRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) 
         },
 
-
-
-
-        // {
-        //   path: 'adminhome',
-        //   element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
-        // },
-        // {
-        //   path: 'allusers', 
-        //   element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-        // },
-        // {
-        //   path: 'addItem',
-        //   element: <AdminRoute><AddItem></AddItem></AdminRoute>
-        // },
-        // {
-        //   path: 'manageitems',
-        //   element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
-        // }
       ]
-    },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    },    
     {
         path: '*',
         element: <ErrorPage></ErrorPage>
