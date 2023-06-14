@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
+import { FaBook, FaPlusCircle, FaShoppingCart } from 'react-icons/fa';
 
 
 const DashBoard = () => {
@@ -27,15 +28,15 @@ const DashBoard = () => {
                     <h1 className='text-3xl text-center mb-7'>Dashboard Items</h1>
                  {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/manage-courses">Manage Courses</NavLink></li>
-                            <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
+                            <li><NavLink to="/dashboard/manage-courses">Manage Courses  <FaBook></FaBook></NavLink></li>
+                            <li><NavLink to="/dashboard/manage-users">Manage Users <FaUsers></FaUsers> </NavLink></li>
                         </> :
                         isInstructor ? <>
-                            <li><NavLink to="/dashboard/add-course">Add Courses</NavLink></li>
-                            <li><NavLink to="/dashboard/my-courses"> My Courses</NavLink></li>
+                            <li><NavLink to="/dashboard/add-course">Add Courses <FaPlusCircle></FaPlusCircle></NavLink></li>
+                            <li><NavLink to="/dashboard/my-courses"> My Courses  <FaBook></FaBook> </NavLink></li>
                         </> : <>
-                            <li><NavLink to="/dashboard/my-selected-courses">My Selected Courses</NavLink></li>
-                            <li><NavLink to="/dashboard/my-enrolled-courses">My Enrolled Courses</NavLink></li>
+                            <li><NavLink to="/dashboard/my-selected-courses">My Selected Course <FaShoppingCart></FaShoppingCart> </NavLink></li>
+                            <li><NavLink to="/dashboard/my-enrolled-courses">My Enrolled Courses <FaBook></FaBook> </NavLink></li>
                         </>
                     }
                 </ul>

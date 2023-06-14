@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaCartPlus } from 'react-icons/fa';
 
 const AllCoursesCard = ({course}) => {
 
@@ -63,7 +64,7 @@ const AllCoursesCard = ({course}) => {
             <p className="leading-relaxed text-base mb-3"> <span className='font-medium'>Instructor Name:</span> {instructorName}</p>
             <p className="leading-relaxed text-base mb-3"> <span className='font-medium'>Available Seats:</span> {availableSeats}</p>
             <p className="leading-relaxed text-base mb-7"> <span className='font-medium'>Price:</span>  ${price}</p>
-            <button disabled={availableSeats === 0 ? true : false} onClick={()=>handleSelect(course)} className={`${availableSeats === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600'} text-white border-0 py-2 px-5 focus:outline-none  rounded text-lg`}>Select Course</button>
+            <button disabled={availableSeats === 0 ? true : false} onClick={()=>handleSelect(course)} className={`${availableSeats === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600'} text-white border-0 py-2 px-5 focus:outline-none  rounded text-lg`}>Select Course <FaCartPlus></FaCartPlus></button>
             </div>
         </div>
     );

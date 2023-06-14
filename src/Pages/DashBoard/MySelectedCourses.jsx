@@ -87,7 +87,7 @@ const MySelectedCourses = () => {
                                 <td>
                                     <button onClick={() => handleDelete(course)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                     <Link to="">
-                                        <button className="btn btn-warning btn-sm">Pay</button>
+                                        <button className="btn btn-warning btn-sm ml-2">Pay</button>
                                     </Link>
                                 </td>
                             </tr>)
