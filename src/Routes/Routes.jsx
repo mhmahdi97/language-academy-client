@@ -18,6 +18,7 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import MyEnrolledCourses from "../Pages/DashBoard/MyEnrolledCourses";
 import Payment from "../Pages/DashBoard/Payment/Payment";
+import PaymentHistory from "../Pages/DashBoard/Payment/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         {
           path: 'my-enrolled-courses',
           element: <PrivateRoute> <MyEnrolledCourses></MyEnrolledCourses> </PrivateRoute>
+        },
+        {
+          path: 'payments-history',
+          element: <PrivateRoute> <PaymentHistory></PaymentHistory> </PrivateRoute>
         },
         {
           path: 'payment/:id', 
