@@ -12,6 +12,7 @@ import AddCourse from "../Pages/DashBoard/AddCourse";
 import MyCourses from "../Pages/DashBoard/MyCourses";
 import ManageCourses from "../Pages/DashBoard/ManageCourses";
 import AdminFeedback from "../Pages/DashBoard/AdminFeedback";
+import ManageUsers from "../Pages/DashBoard/ManageUsers";
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
         {
           path: 'manage-courses',
           element: <ManageCourses></ManageCourses>
+        },
+        {
+          path: 'manage-users',
+          element: <ManageUsers></ManageUsers>
         },
         {
           path: 'admin-feedback/:id',

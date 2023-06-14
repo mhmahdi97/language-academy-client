@@ -40,9 +40,9 @@ const AdminFeedback = () => {
     return (
         <div className='flex w-full h-screen items-center justify-center' >
             <form onSubmit={handleFeedback}>
-                <div className='border'>
+                <div>
                     <h1 className='text-4xl mb-4'>Give Feedback to {slogan} course:</h1>
-                    <div className=' border'>
+                    <div>
                         <textarea name='feedback' placeholder="Feedback" className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
                     </div>
                     <button className='btn bg-gray-200 text-center'>Give Feedback</button>
