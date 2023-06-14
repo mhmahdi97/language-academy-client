@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 
 
- const useSelectedCourses = () => {
+ const useEnrolledCourses = () => {
     const { user, loading } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
     const { refetch, data: enrolledCourses = [] } = useQuery({
@@ -20,4 +20,4 @@ import { useQuery } from "@tanstack/react-query";
     return [enrolledCourses, refetch]
 
 }
-export default useSelectedCourses;
+export default useEnrolledCourses;
