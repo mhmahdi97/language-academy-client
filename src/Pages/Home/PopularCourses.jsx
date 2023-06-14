@@ -6,7 +6,7 @@ const PopularCourses = () => {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const url = 'http://localhost:5000/courses?status=approved'
+    const url = 'https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses?status=approved'
 
     useEffect(()=>{
         fetch(url)

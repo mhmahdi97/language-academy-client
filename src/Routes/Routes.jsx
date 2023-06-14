@@ -78,7 +78,7 @@ const router = createBrowserRouter([
         {
           path: 'admin-feedback/:id',
           element: <AdminRoute><AdminFeedback></AdminFeedback></AdminRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`) 
+          loader: ({params}) => fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/${params.id}`) 
         },
 
       ]

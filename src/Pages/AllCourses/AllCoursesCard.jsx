@@ -17,7 +17,7 @@ const AllCoursesCard = ({course}) => {
      const handleSelect = (course)=> {
         if(user && user.email){
             const selectedCourse = {selectedCourseId: _id, name, slogan, instructorName, image, price, email: user.email}
-            fetch('http://localhost:5000/selected-courses', {
+            fetch('https://b712-summer-camp-server-side-mhmahdi97.vercel.app/selected-courses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

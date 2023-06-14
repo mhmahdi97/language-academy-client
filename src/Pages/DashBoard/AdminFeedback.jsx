@@ -16,7 +16,7 @@ const AdminFeedback = () => {
             feedback: feedback
         }
 
-        fetch(`http://localhost:5000/courses/feedback/${_id}`, {
+        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/feedback/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

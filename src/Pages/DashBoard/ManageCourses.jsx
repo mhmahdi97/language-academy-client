@@ -7,7 +7,7 @@ const ManageCourses = () => {
     const [courses, loading, refetch] = useCourses();
 
     const handleApprove = (course) => {
-        fetch(`http://localhost:5000/courses/approved/${course._id}`, {
+        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/approved/${course._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -26,7 +26,7 @@ const ManageCourses = () => {
         })
     }
     const handleDeny = (course) => {
-         fetch(`http://localhost:5000/courses/denied/${course._id}`, {
+         fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/denied/${course._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())

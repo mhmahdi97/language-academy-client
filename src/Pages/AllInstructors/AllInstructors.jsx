@@ -5,7 +5,7 @@ const AllInstructors = () => {
     const [allInstructors, setAllInstructors] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const url = 'http://localhost:5000/users?role=instructor';
+    const url = 'https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users?role=instructor';
 
     useEffect(()=>{
         fetch(url)
