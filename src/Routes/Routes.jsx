@@ -16,6 +16,7 @@ import ManageUsers from "../Pages/DashBoard/ManageUsers";
 import PrivateRoute from "./PrivateRoute"
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import MyEnrolledCourses from "../Pages/DashBoard/MyEnrolledCourses";
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         {
           path: 'my-selected-courses',
           element: <PrivateRoute> <MySelectedCourses></MySelectedCourses> </PrivateRoute>
+        },
+        {
+          path: 'my-enrolled-courses',
+          element: <PrivateRoute> <MyEnrolledCourses></MyEnrolledCourses> </PrivateRoute>
         },
 
         // instructor routes

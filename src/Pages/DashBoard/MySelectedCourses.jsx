@@ -48,9 +48,6 @@ const MySelectedCourses = () => {
             <div className="font-semibold h-[60px] flex justify-evenly items-center">
                 <h3 className="text-3xl">Total Courses: {selectedCourses.length}</h3>
                 <h3 className="text-3xl">Total Price: ${total}</h3>
-                <Link to="">
-                    <button className="btn btn-warning btn-sm">Pay</button>
-                </Link>
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -89,6 +86,9 @@ const MySelectedCourses = () => {
                                 <td >${course.price}</td>
                                 <td>
                                     <button onClick={() => handleDelete(course)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                    <Link to="">
+                                        <button className="btn btn-warning btn-sm">Pay</button>
+                                    </Link>
                                 </td>
                             </tr>)
                         }
