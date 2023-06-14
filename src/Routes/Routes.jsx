@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         {
           path: 'payment/:id', 
           element: <PrivateRoute> <Payment></Payment> </PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/selected-course/${params.id}`)
+          loader: ({params}) => fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/${params.id}`)
         },
 
         // instructor routes
