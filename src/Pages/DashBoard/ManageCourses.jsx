@@ -45,6 +45,37 @@ const ManageCourses = () => {
         })
     }
 
+    const handleDelete = course => {
+        console.log(course)
+        Swal.fire({
+            title: 'Are You Sure to Delete the Course?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete This!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/delete-course/${course._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'The Course Has Been Deleted!',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
+
     return (
         <div className="w-full mt-12">
             <div className="font-semibold h-[60px] mb-16 flex justify-evenly items-center">
@@ -102,6 +133,7 @@ const ManageCourses = () => {
                                 <td>
                                     <button onClick={()=>handleApprove(course)} className="btn btn-sm bg-slate-200" disabled={course.status === 'approved' || course.status === 'denied' ? true : false} >Approve</button>
                                     <button onClick={()=>handleDeny(course)} className="btn btn-sm bg-slate-200" disabled={course.status === 'approved' || course.status === 'denied' ? true : false}>Deny</button>
+                                    <button onClick={()=>handleDelete(course)} className="btn btn-sm bg-slate-200">Delete</button>
                                     {
                                         course.status === 'denied' ? <Link to={`/dashboard/admin-feedback/${course._id}`}>
                                         <button className="btn btn-sm bg-slate-200">Send Feedback</button>
