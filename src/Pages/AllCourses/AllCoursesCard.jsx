@@ -3,12 +3,15 @@ import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const AllCoursesCard = ({course}) => {
 
-    const {name, slogan, image, instructorName, availableSeats, price, _id} = course;
+    const {name, slogan, image, enrolled, instructorName, availableSeats, price, _id} = course;
     
-    // const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const [isAdmin] = useAdmin();
+    const[isInstructor] = useInstructor();
 
     const {user} = useAuth();
 
@@ -17,7 +20,7 @@ const AllCoursesCard = ({course}) => {
 
      const handleSelect = (course)=> {
         if(user && user.email){
-            const selectedCourse = {selectedCourseId: _id, name, slogan, instructorName, image, price, availableSeats, email: user.email}
+            const selectedCourse = {selectedCourseId: _id, name, slogan, instructorName, image, price, availableSeats, enrolled, email: user.email}
             fetch('https://b712-summer-camp-server-side-mhmahdi97.vercel.app/selected-courses', {
                 method: 'POST',
                 headers: {
@@ -63,8 +66,9 @@ const AllCoursesCard = ({course}) => {
             <h2 className="text-lg text-gray-900 font-bold title-font mb-4">{slogan}</h2>
             <p className="leading-relaxed text-base mb-3"> <span className='font-medium'>Instructor Name:</span> {instructorName}</p>
             <p className="leading-relaxed text-base mb-3"> <span className='font-medium'>Available Seats:</span> {availableSeats}</p>
+            <p className="leading-relaxed text-base mb-3"> <span className='font-medium'>Students Enrolled:</span> {enrolled}</p>
             <p className="leading-relaxed text-base mb-7"> <span className='font-medium'>Price:</span>  ${price}</p>
-            <button disabled={availableSeats === 0 ? true : false} onClick={()=>handleSelect(course)} className={`${availableSeats === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600'} text-white border-0 py-2 px-5 focus:outline-none  rounded text-lg`}>Select Course <FaCartPlus></FaCartPlus></button>
+            <button disabled={availableSeats === 0 || isAdmin || isInstructor ? true : false} onClick={()=>handleSelect(course)} className={`${availableSeats === 0 || isAdmin || isInstructor ? 'bg-gray-300 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600'} text-white border-0 py-2 px-5 focus:outline-none  rounded text-lg`}>Select Course <FaCartPlus></FaCartPlus></button>
             </div>
         </div>
     );

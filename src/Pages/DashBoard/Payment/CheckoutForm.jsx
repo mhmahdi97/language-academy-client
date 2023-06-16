@@ -7,7 +7,7 @@ import './CheckoutForm.css';
 
 
 
-const CheckoutForm = ({ selectedCourse, fixedPrice, updatedAvailableSeats }) => {
+const CheckoutForm = ({ selectedCourse, fixedPrice, updatedAvailableSeats, newEnrolled }) => {
     const {_id, selectedCourseId, name, slogan, instructorName, availableSeats, image, price, email} = selectedCourse;
     const stripe = useStripe();
     const elements = useElements();
@@ -95,11 +95,12 @@ const CheckoutForm = ({ selectedCourse, fixedPrice, updatedAvailableSeats }) => 
 
 
             const updateSeats = {
-                newSeats: updatedAvailableSeats
+                newSeats: updatedAvailableSeats,
+                newEnrolled: newEnrolled
             }
             
 
-            fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/decrease-seat/${_id}`, {
+            fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/courses/update-seat/${selectedCourseId}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'
