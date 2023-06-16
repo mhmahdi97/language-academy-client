@@ -107,7 +107,7 @@ const ManageCourses = () => {
                                 </td>
                                 <td>
                                     <div>
-                                        <div className="w-56">
+                                        <div className="w-48">
                                             <img src={course.image} alt="course image" />
                                         </div>
                                     </div>
