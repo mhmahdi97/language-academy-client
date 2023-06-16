@@ -11,7 +11,7 @@ const ManageUsers = () => {
     })
 
     const handleMakeAdmin = user =>{
-        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users/admin/${user._id}`, {
+        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users/make-admin/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -30,7 +30,7 @@ const ManageUsers = () => {
         })
     }
     const handleMakeInstructor = user =>{
-        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users/instructor/${user._id}`, {
+        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users/make-instructor/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -41,7 +41,27 @@ const ManageUsers = () => {
                 Swal.fire({
                     position: 'top',
                     icon: 'success',
-                    title: `${user.name} is an Instructor Now!`,
+                    title: `${user.name} is a Instructor Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+    
+    const handleMakeUser = user =>{
+        fetch(`https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users/make-user/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                refetch();
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: `${user.name} is an User Now!`,
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -72,9 +92,10 @@ const ManageUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>
+                                <td className='flex justify-center'>
                                     <button onClick={()=>handleMakeAdmin(user)} className="btn btn-sm bg-slate-200" disabled={user.role === 'admin' ? true : false} >Make Admin</button>
                                     <button onClick={()=>handleMakeInstructor(user)} className="btn btn-sm bg-slate-200" disabled={user.role === 'instructor' ? true : false}>Make Instructor</button>
+                                    <button onClick={()=>handleMakeUser(user)} className="btn btn-sm bg-slate-200" disabled={user.role === 'user' ? true : false}>Make User</button>
                                 </td>
                                 
                             </tr>)
