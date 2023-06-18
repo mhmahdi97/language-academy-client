@@ -5,51 +5,98 @@ import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from '../Shared/SocialLogin';
 import Swal from 'sweetalert2';
 
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
+
 const Register = () => {
 
     const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+    let imgURL;
+
     const onSubmit = data =>{
         console.log(data)
 
+        const formData = new FormData();
+        formData.append('image', data.image[0])
+
+        
         createUser(data.email, data.password)
-            .then(result => {
-
-                const loggedUser = result.user;
-                console.log(loggedUser);
-
-                updateUserProfile(data.name, data.photoURL)
-                    .then(() => {
-                        const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'user' }
-                        fetch('https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users', {
-                            method: 'POST',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(saveUser)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.insertedId) {
-                                    reset();
-                                    Swal.fire({
-                                        position: 'top',
-                                        icon: 'success',
-                                        title: 'User Registered Successfully.',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                    navigate('/');
-                                }
+        .then(result => {
+                fetch(img_hosting_url, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(imgResponse => {
+                    if (imgResponse.success) {
+                        imgURL = imgResponse.data.display_url;
+                        updateUserProfile(data.name, imgURL)
+                            .then(() => {
+                                const saveUser = { name: data.name, email: data.email, photo: imgURL, role: 'user' }
+                                fetch('https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users', {
+                                    method: 'POST',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(saveUser)
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.insertedId) {
+                                            reset();
+                                            Swal.fire({
+                                                position: 'top',
+                                                icon: 'success',
+                                                title: 'User Registered Successfully.',
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                            });
+                                            navigate('/');
+                                        }
+                                    })
+        
+        
+        
                             })
+                            .catch(error => console.log(error))
+                    }
+                    else {
+                        updateUserProfile(data.name, '')
+                            .then(() => {
+                                const saveUser = { name: data.name, email: data.email, photo: '', role: 'user' }
+                                fetch('https://b712-summer-camp-server-side-mhmahdi97.vercel.app/users', {
+                                    method: 'POST',
+                                    headers: {
+                                        'content-type': 'application/json'
+                                    },
+                                    body: JSON.stringify(saveUser)
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.insertedId) {
+                                            reset();
+                                            Swal.fire({
+                                                position: 'top',
+                                                icon: 'success',
+                                                title: 'User Registered Successfully.',
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                            });
+                                            navigate('/');
+                                        }
+                                    })
+        
+        
+        
+                            })
+                            .catch(error => console.log(error))
+                    }
+                })
 
-
-
-                    })
-                    .catch(error => console.log(error))
-            })
+        })
 
     }
     
@@ -67,7 +114,7 @@ const Register = () => {
                         </div>
                         <div className="relative mb-4">
                             <label className="leading-7 text-sm text-gray-600">Photo URL</label>
-                            <input type="text" {...register("photoURL")} placeholder="Enter Your Photo URL" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="file" {...register("image")} placeholder="Enter Your Photo URL" className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <div className="relative mb-4">
                             <label className="leading-7 text-sm text-gray-600">Email*</label>
